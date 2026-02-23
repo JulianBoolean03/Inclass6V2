@@ -25,6 +25,28 @@ class CounterWidget extends StatefulWidget {
 class _CounterWidgetState extends State<CounterWidget> {
   int _counter = 0;
 
+  Color? countdownStatus(){
+    if(_counter == 0){
+      return Colors.red;
+    } else if (_counter > 0 && _counter <= 50){
+      return Colors.yellow;
+    } else if (_counter > 50 && _counter <= 100){
+      return Colors.green;
+    } else {
+      return null;
+    }
+  }
+
+  String liftofflogic(){
+    if(_counter == 100){
+      return 'LIFTOFF!';
+    } else {
+      return '$_counter';
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +56,8 @@ class _CounterWidgetState extends State<CounterWidget> {
         children: [
           Center(
             child: Container(
-              color: Colors.blue,
-              child: Text('$_counter', style: const TextStyle(fontSize: 50.0)),
+              color: countdownStatus(),
+              child: Text(liftofflogic(), style: const TextStyle(fontSize: 50.0)),
             ),
           ),
           Slider(
