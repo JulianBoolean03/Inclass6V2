@@ -10,18 +10,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rocket Launch Controller',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: CounterWidget(),
+      home: const CounterWidget(),
     );
   }
 }
 
 class CounterWidget extends StatefulWidget {
+  const CounterWidget({super.key});
+
   @override
   _CounterWidgetState createState() => _CounterWidgetState();
 }
 
 class _CounterWidgetState extends State<CounterWidget> {
-  // set counter value
   int _counter = 0;
 
   @override
@@ -48,6 +49,36 @@ class _CounterWidgetState extends State<CounterWidget> {
             },
             activeColor: Colors.blue,
             inactiveColor: Colors.red,
+          ),
+          ElevatedButton(
+            onPressed: _counter < 100
+                ? () {
+                    setState(() {
+                      _counter++;
+                    });
+                  }
+                : null,
+            child: const Text('Ignite'),
+          ),
+          ElevatedButton(
+            onPressed: _counter > 0
+                ? () {
+                    setState(() {
+                      _counter--;
+                    });
+                  }
+                : null,
+            child: const Text('Decrement'),
+          ),
+          ElevatedButton(
+            onPressed: _counter != 0
+                ? () {
+                    setState(() {
+                      _counter = 0;
+                    });
+                  }
+                : null,
+            child: const Text('Reset'),
           ),
         ],
       ),

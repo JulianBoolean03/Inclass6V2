@@ -11,7 +11,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:ic6v2/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Counter increments when Ignite is pressed', (
+    WidgetTester tester,
+  ) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
@@ -19,8 +21,8 @@ void main() {
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap the Ignite button and trigger a frame.
+    await tester.tap(find.text('Ignite'));
     await tester.pump();
 
     // Verify that our counter has incremented.
